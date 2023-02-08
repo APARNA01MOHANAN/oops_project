@@ -2,8 +2,8 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
+#from selenium.webdriver.support import expected_conditions
+#from selenium.webdriver.support.wait import WebDriverWait
 
 
 class Chumbak:
@@ -24,12 +24,12 @@ class Chumbak:
     def edit_address(self):
         return 0
 
-class Add_To_Cart(Chumbak):
+class AddToCart(Chumbak):
     def edit_address(self):
         self.driver.find_element(By.XPATH, "//a[@class='Button Button--primary']").click()
         # after clicking edit address it may go again to the login page so re-run the code
         # it is website issue
-        self.driver.find_element(By.XPATH, "//button[contains(normalize-space(),'Add a new address')]").click()
+        self.driver.find_element(By.XPATH, "//button[contains(normalize-space(), 'Add a new address')]").click()
         self.driver.find_element(By.NAME, "address[first_name]").send_keys("Aparna")
         self.driver.find_element(By.NAME, "address[last_name]").send_keys("Mohanan")
         self.driver.find_element(By.NAME, "address[company]").send_keys("APMO")
@@ -49,7 +49,7 @@ class Add_To_Cart(Chumbak):
 
         self.driver.find_element(By.ID, "mm-homepage-search").send_keys("watch")
         time.sleep(6)
-        self.driver.find_element(By.XPATH,"//a[contains(normalize-space(),'Mother of Pearl Tropical Beads Watch & Bracelet Set')]").click()
+        self.driver.find_element(By.XPATH,"//a[contains(normalize-space(),'Floral Birds Stainless Steel ')]").click()
         element = self.driver.find_element(By.CSS_SELECTOR,"button[class='ProductForm__AddToCart Button Button--primary Button--full']")
         self.driver.execute_script("arguments[0].click()", element)
         time.sleep(15)
@@ -61,7 +61,7 @@ class Add_To_Cart(Chumbak):
             print("You have entered Invalid xpath")
 
 
-obj = Add_To_Cart()
+obj = AddToCart()
 
 while True:
     print("Enter 1 for login")
@@ -73,7 +73,9 @@ while True:
     if userchoice == 1:
         obj.login()
     elif userchoice == 2:
-        #while excecuting this line it may go to login page instead of add address it is website error
+        #while excecuting this line it may go to
+        # login page instead of add address
+        # it is website error
         #so re-run the code on failure
         obj.edit_address()
     elif userchoice == 3:
