@@ -21,7 +21,10 @@ class Chumbak:
         self.driver.find_element(By.XPATH, "//button[text()='Login']").click()
 
 
-class Add_to_cart(Chumbak):
+    def edit_address(self):
+        return 0
+
+class Add_To_Cart(Chumbak):
     def edit_address(self):
         self.driver.find_element(By.XPATH, "//a[@class='Button Button--primary']").click()
         # after clicking edit address it may go again to the login page so re-run the code
@@ -58,7 +61,7 @@ class Add_to_cart(Chumbak):
             print("You have entered Invalid xpath")
 
 
-obj = Add_to_cart()
+obj = Add_To_Cart()
 
 while True:
     print("Enter 1 for login")
@@ -79,7 +82,3 @@ while True:
         obj.xpath_error()
     elif userchoice == 5:
         quit()
-
-
-
-
